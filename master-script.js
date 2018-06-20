@@ -14,6 +14,7 @@ function onOpen() {
         .addItem('Step 2 - Clear rows', 'clearRowsThree')
         .addItem('Step 3 - Delete B and H columns', 'deleteBHColumns')
         .addItem('Step 4 - Add currency formatting', 'formatCurrency')
+        .addItem('Step 5 - Get sum', 'sumValues')
         .addToUi();
 }
 
@@ -29,6 +30,15 @@ function formatCurrency() {
     sheet.getRange(i+1, 7).setValue("$" + oldValue1);
     sheet.getRange(i+1, 8).setValue("$" + oldValue2);
   }
+};
+
+function sumValues() {
+  for ( i = 0; i < lastRow; i++ ){
+    var sum = 0
+    sum += parseInt(sheet.getRange(i+1, 7).getValue())
+  }
+  return sum
+  sheet.getRange(lastRow + 1, 7).setValue(sum);
 }
 
 
