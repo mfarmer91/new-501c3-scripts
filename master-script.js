@@ -23,9 +23,11 @@ function deleteBHColumns() {
 };
 
 function formatCurrency() {
-  for ( i = 1; i < lastColumn - 1; i++ ){
-    sheet.getRange(i+1, 7).setBackground("#e69138");
-    sheet.getRange(i+1, 8).setBackground("#e69138");
+  for ( i = 1; i < lastRow; i++ ){
+    var oldValue1 = sheet.getRange(i+1, 7).getValue();
+    var oldValue2 = sheet.getRange(i+1, 8).getValue();
+    sheet.getRange(i+1, 7).setValue("$" + oldValue1);
+    sheet.getRange(i+1, 8).setValue("$" + oldValue2);
   }
 }
 
