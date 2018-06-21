@@ -8,13 +8,14 @@ var searchRange = sheet.getRange(2,2, lastRow-1, lastColumn-1);
 
 function onOpen() {
     SpreadsheetApp.getUi()
-        .createMenu('GDPR scripts')
+        .createMenu('501c3 Supporter List Hacks')
         .addItem('Step 1 - Highight Rows', 'highlightRows')
         //.addItem('Delete rows', 'readRows')
         .addItem('Step 2 - Clear rows', 'clearRowsThree')
         .addItem('Step 3 - Delete B and H columns', 'deleteBHColumns')
-        .addItem('Step 4 - Add currency formatting', 'formatCurrency')
-        .addItem('Step 5 - Get sum', 'sumValues')
+        .addItem('Step 4 - Get sums', 'sumValues')
+        .addItem('Step 5 - Add currency formatting', 'formatCurrency')
+
         .addToUi();
 }
 
@@ -41,6 +42,8 @@ function sumValues() {
   }
   sheet.getRange(lastRow + 1, 7).setValue(sumRowSeven).setFontWeight("bold");
   sheet.getRange(lastRow + 1, 8).setValue(sumRowEight).setFontWeight("bold");
+  sheet.getRange(lastRow + 2, 7).setValue("Campaign Total").setFontWeight("bold");
+  sheet.getRange(lastRow + 2, 8).setValue(sumRowSeven + sumRowEight).setFontWeight("bold");
 }
 
 
@@ -126,8 +129,8 @@ function clearRowsThree() {
          || rangeValues[j][i].toUpperCase().indexOf("ITALY") > -1
          || rangeValues[j][i].toUpperCase().indexOf("IRELAND") > -1
          || rangeValues[j][i].toUpperCase().indexOf("HUNGARY") > -1){
-        sheet.getRange(j+2,i+5).clear(); //donation amount
-        sheet.getRange(j+2,i+4).clear(); //seller profit
+        //sheet.getRange(j+2,i+5).clear(); //donation amount
+        //sheet.getRange(j+2,i+4).clear(); //seller profit
         sheet.getRange(j+2,i+3).clear(); //order number
         sheet.getRange(j+2,i+2).clear(); //address
         sheet.getRange(j+2,i+1).clear(); //email
