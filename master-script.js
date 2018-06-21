@@ -33,14 +33,15 @@ function formatCurrency() {
 };
 
 function sumValues() {
-  for ( i = 0; i < lastRow; i++ ){
-    var sum = 0
-    sum += parseInt(sheet.getRange(i+1, 7).getValue())
+  var sumRowSeven = 0;
+  var sumRowEight = 0;
+  for(var i = 1; i < lastRow; i++){
+    sumRowSeven = sumRowSeven + sheet.getRange(i+1, 7).getValue();
+    sumRowEight = sumRowEight + sheet.getRange(i+1, 8).getValue();
   }
-  return sum
-  sheet.getRange(lastRow + 1, 7).setValue(sum);
+  sheet.getRange(lastRow + 1, 7).setValue(sumRowSeven).setFontWeight("bold");
+  sheet.getRange(lastRow + 1, 8).setValue(sumRowEight).setFontWeight("bold");
 }
-
 
 
 function highlightRows() {
